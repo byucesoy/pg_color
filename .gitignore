@@ -1,0 +1,9 @@
+*.o
+*.so
+binary.dat
+regression.out
+regression.diffs
+results
+
+pg_color--*.*.sql
+!pg_color--*.*--*.*.sql
