@@ -1,0 +1,15 @@
+Source: pgcolor
+Section: database
+Priority: optional
+Maintainer: Burak Yucesoy <burak@citusdata.com>
+Uploaders: Burak Yucesoy <burak@citusdata.com>
+Build-Depends: debhelper (>= 9), autotools-dev, flex, postgresql-server-dev-all (>= 158~), libedit-dev, libpam0g-dev, libselinux1-dev, libxslt1-dev
+Standards-Version: 3.9.7
+Homepage: https://github.com/byucesoy/pg_color
+
+Package: postgresql-PGVERSION-pgcolor
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, postgresql-PGVERSION
+Description: Color data type for PostgreSQL
+ Adds color data type and utility functions for it to PostgreSQL
+
