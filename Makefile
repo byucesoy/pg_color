@@ -6,6 +6,8 @@ DATA = $(wildcard $(EXTENSION)--*--*.sql)
 
 MODULES = pg_color
 
+REGRESS = setup $(filter-out setup,$(patsubst sql/%.sql,%,$(sort $(wildcard sql/*.sql))))
+
 PG_CONFIG ?= pg_config
 PGXS = $(shell $(PG_CONFIG) --pgxs)
 include $(PGXS)

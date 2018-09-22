@@ -1,0 +1,55 @@
+CREATE TABLE colors(color color);
+-- INSERT different color values
+INSERT INTO colors VALUES('000000'), ('FFFFFF'), ('FF0000'), ('00FF00'), ('0000FF');
+-- Display INSERTed values
+SELECT * FROM colors;
+ color  
+--------
+ 000000
+ FFFFFF
+ FF0000
+ 00FF00
+ 0000FF
+(5 rows)
+
+-- Try INSERTing invalid colors
+INSERT INTO colors VALUES('0');
+ERROR:  value "0" is out of range for type color
+LINE 1: INSERT INTO colors VALUES('0');
+                                  ^
+INSERT INTO colors VALUES('0000000');
+ERROR:  value "0000000" is out of range for type color
+LINE 1: INSERT INTO colors VALUES('0000000');
+                                  ^
+INSERT INTO colors VALUES('GGGGGG');
+ERROR:  value 'G' is not a valid digit for type color.
+LINE 1: INSERT INTO colors VALUES('GGGGGG');
+                                  ^
+-- Test equality operator
+SELECT * FROM colors WHERE color = '000000';
+ color  
+--------
+ 000000
+(1 row)
+
+-- Test inequality operator
+SELECT * FROM colors WHERE color <> '000000';
+ color  
+--------
+ FFFFFF
+ FF0000
+ 00FF00
+ 0000FF
+(4 rows)
+
+-- Test JOIN with our new type
+SELECT * FROM colors c1 JOIN colors c2 ON (c1.color = c2.color);
+ color  | color  
+--------+--------
+ 000000 | 000000
+ FFFFFF | FFFFFF
+ FF0000 | FF0000
+ 00FF00 | 00FF00
+ 0000FF | 0000FF
+(5 rows)
+
